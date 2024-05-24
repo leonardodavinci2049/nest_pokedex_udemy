@@ -22,18 +22,18 @@ export class SeedService {
       'https://pokeapi.co/api/v2/pokemon?limit=650',
     );
 
-    const pokemonToInsert: { name: string; no: number }[] = [];
+    const pokemonToInsert: { no: number; name: string; url }[] = [];
 
     data.results.forEach(({ name, url }) => {
       const segments = url.split('/');
       const no = +segments[segments.length - 2];
 
       // const pokemon = await this.pokemonModel.create({ name, no });
-      pokemonToInsert.push({ name, no }); // [{ name: bulbasaur, no: 1 }]
+      pokemonToInsert.push({ name, no, url }); // [{ name: bulbasaur, no: 1 }]
     });
 
     await this.pokemonModel.insertMany(pokemonToInsert);
 
-    return data.results;
+    return pokemonToInsert;
   }
 }
