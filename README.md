@@ -38,7 +38,7 @@ $ npm install
 $ docker-compose up -d
 ```
 
-## 4. Clone the .env.template file
+## 4. rename .env.template file
 
 ```bash
 $ .env
